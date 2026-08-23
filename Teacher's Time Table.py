@@ -1,1617 +1,655 @@
-import mysql.connector as mysql
-def enter_monday(code,name,sub):
-   dm={}
-   print(('-')*141)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR MONDAY",(' ')*49,"|")
-   print(('-')*141)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("Enter class for I period:")
-   t_2=input("Enter class for II period:")
-   t_3=input("Enter class for III period:")
-   t_4=input("Enter class for IV period:")
-   t_5=input("Enter class for V period:")
-   t_6=input("Enter class for VI period:")
-   t_7=input("Enter class for VII period:")
-   dm['code']=code
-   dm['name']=name
-   dm['sub']=sub
-   dm['t1']=t_1
-   dm['t2']=t_2
-   dm['t3']=t_3
-   dm['t4']=t_4
-   dm['t5']=t_5
-   dm['t6']=t_6
-   dm['t7']=t_7
-   return dm
-def enter_tuesday(code,name,sub):
-   dt={}
-   print(('-')*141)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR TUESDAY",(' ')*48,"|")
-   print(('-')*141)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("Enter class for I period:")
-   t_2=input("Enter class for II period:")
-   t_3=input("Enter class for III period:")
-   t_4=input("Enter class for IV period:")
-   t_5=input("Enter class for V period:")
-   t_6=input("Enter class for VI period:")
-   t_7=input("Enter class for VII period:")
-   dt['code']=code
-   dt['name']=name
-   dt['sub']=sub
-   dt['t1']=t_1
-   dt['t2']=t_2
-   dt['t3']=t_3
-   dt['t4']=t_4
-   dt['t5']=t_5
-   dt['t6']=t_6
-   dt['t7']=t_7
-   return dt
-def enter_wednesday(code,name,sub):
-   dw={}
-   print(('-')*141)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR WEDNESDAY",(' ')*45,"|")
-   print(('-')*141)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("Enter class for I period:")
-   t_2=input("Enter class for II period:")
-   t_3=input("Enter class for III period:")
-   t_4=input("Enter class for IV period:")
-   t_5=input("Enter class for V period:")
-   t_6=input("Enter class for VI period:")
-   t_7=input("Enter class for VII period:")
-   dw['code']=code
-   dw['name']=name
-   dw['sub']=sub
-   dw['t1']=t_1
-   dw['t2']=t_2
-   dw['t3']=t_3
-   dw['t4']=t_4
-   dw['t5']=t_5
-   dw['t6']=t_6
-   dw['t7']=t_7
-   return dw
-def enter_thursday(code,name,sub):
-   dth={}
-   print(('-')*141)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR THURSDAY",(' ')*47,"|")
-   print(('-')*141)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("Enter class for I period:")
-   t_2=input("Enter class for II period:")
-   t_3=input("Enter class for III period:")
-   t_4=input("Enter class for IV period:")
-   t_5=input("Enter class for V period:")
-   t_6=input("Enter class for VI period:")
-   t_7=input("Enter class for VII period:")
-   dth['code']=code
-   dth['name']=name
-   dth['sub']=sub
-   dth['t1']=t_1
-   dth['t2']=t_2
-   dth['t3']=t_3
-   dth['t4']=t_4
-   dth['t5']=t_5
-   dth['t6']=t_6
-   dth['t7']=t_7
-   return dth
-def enter_friday(code,name,sub):
-   df={}
-   print(('-')*141)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR FRIDAY",(' ')*49,"|")
-   print(('-')*141)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("Enter class for I period:")
-   t_2=input("Enter class for II period:")
-   t_3=input("Enter class for III period:")
-   t_4=input("Enter class for IV period:")
-   t_5=input("Enter class for V period:")
-   t_6=input("Enter class for VI period:")
-   t_7=input("Enter class for VII period:")
-   df['code']=code
-   df['name']=name
-   df['sub']=sub
-   df['t1']=t_1
-   df['t2']=t_2
-   df['t3']=t_3
-   df['t4']=t_4
-   df['t5']=t_5
-   df['t6']=t_6
-   df['t7']=t_7
-   return df
-def enter_saturday(code,name,sub):
-   ds={}
-   print(('-')*141)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR SATURDAY",(' ')*47,"|")
-   print(('-')*141)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("Enter class for I period:")
-   t_2=input("Enter class for II period:")
-   t_3=input("Enter class for III period:")
-   t_4=input("Enter class for IV period:")
-   t_5=input("Enter class for V period:")
-   t_6=input("Enter class for VI period:")
-   t_7=input("Enter class for VII period:")
-   ds['code']=code
-   ds['name']=name
-   ds['sub']=sub
-   ds['t1']=t_1
-   ds['t2']=t_2
-   ds['t3']=t_3
-   ds['t4']=t_4
-   ds['t5']=t_5
-   ds['t6']=t_6
-   ds['t7']=t_7
-   return ds
-def display(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   query="Select * from MONDAY"
-   cursor.execute(query)
-   val=cursor.fetchall()
-   print("Teacher's code\t\tTeacher's name\t\tTeacher's sybject")
-   for data in val:
-      print(data[0],"\t\t\t",data[1],"\t\t",data[2])
-def create(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   t_code=int(input("Enter teacher's code:"))
-   t_name=input(("Enter teacher name:"))
-   t_sub=input("Enter subject of teacher:")
-   d1=enter_monday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS MONDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d2=enter_tuesday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS TUESDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d3=enter_wednesday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS WEDNESDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d4=enter_thursday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS THURSDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d5=enter_friday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS FRIDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d6=enter_saturday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS SATURDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   query="Insert into MONDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d1['code'],d1['name'],d1['sub'],d1['t1'],d1['t2'],d1['t3'],d1['t4'],d1['t5'],d1['t6'],d1['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into TUESDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d2['code'],d2['name'],d2['sub'],d2['t1'],d2['t2'],d2['t3'],d2['t4'],d2['t5'],d2['t6'],d2['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into WEDNESDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d3['code'],d3['name'],d3['sub'],d3['t1'],d3['t2'],d3['t3'],d3['t4'],d3['t5'],d3['t6'],d3['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into THURSDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d4['code'],d4['name'],d4['sub'],d4['t1'],d4['t2'],d4['t3'],d4['t4'],d4['t5'],d4['t6'],d4['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into FRIDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d5['code'],d5['name'],d5['sub'],d5['t1'],d5['t2'],d5['t3'],d5['t4'],d5['t5'],d5['t6'],d5['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into SATURDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d6['code'],d6['name'],d6['sub'],d6['t1'],d6['t2'],d6['t3'],d6['t4'],d6['t5'],d6['t6'],d6['t7'])
-   cursor.execute(query)
-   connection.commit()
-   print("Your values have been inserted successfully.")
-def search_data(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   display(a,b)
-   code=int(input("Enter Teacher's code whose data you want to search:"))
-   print("Which details you want to see?")
-   print("1.PARTICULAR DAY")
-   print("2.WHOLE TIME TABLE")
-   ch=int(input("Enter your choice:"))
-   query="Select * from MONDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   M=cursor.fetchall()
-   query="Select * from TUESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   T=cursor.fetchall()
-   query="Select * from WEDNESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   W=cursor.fetchall()
-   query="Select * from THURSDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   Th=cursor.fetchall()
-   query="Select * from FRIDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   F=cursor.fetchall()
-   query="Select * from SATURDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   S=cursor.fetchall()
-   if ch==1:
-      ch1=1
-      print("Enter 1 for Monday.")
-      print("Enter 2 for Tuesday.")
-      print("Enter 3 for Wednesday.")
-      print("Enter 4 for Thursday.")
-      print("Enter 5 for Friday.")
-      print("Enter 6 for Saturday.")
-      print("Enter 0 for exit.")
-      while ch1!=0:
-         ch1=input("Enter day:")
-         if ch1==0:
-            break
-         elif ch1 in ['monday','Monday']:
-            print("CODE : ",M[0][0])
-            print("NAME : ",M[0][1])
-            print("SUBJECT : ",M[0][2])
-            print("I PERIOD : ",M[0][3])
-            print("II PERIOD : ",M[0][4])
-            print("III PERIOD : ",M[0][5])
-            print("IV PERIOD : ",M[0][6])
-            print("V PERIOD : ",M[0][7])
-            print("VI PERIOD : ",M[0][8])
-            print("VII PERIOD : ",M[0][9])
-         elif ch1 in ['tuesday','Tuesday']:
-            print("CODE : ",T[0][0])
-            print("NAME : ",T[0][1])
-            print("SUBJECT : ",T[0][2])
-            print("I PERIOD : ",T[0][3])
-            print("II PERIOD : ",T[0][4])
-            print("III PERIOD : ",T[0][5])
-            print("IV PERIOD : ",T[0][6])
-            print("V PERIOD : ",T[0][7])
-            print("VI PERIOD : ",T[0][8])
-            print("VII PERIOD : ",T[0][9])
-         elif ch1 in ['wednesday','Wednesday']:
-            print("CODE : ",W[0][0])
-            print("NAME : ",W[0][1])
-            print("SUBJECT : ",W[0][2])
-            print("I PERIOD : ",W[0][3])
-            print("II PERIOD : ",W[0][4])
-            print("III PERIOD : ",W[0][5])
-            print("IV PERIOD : ",W[0][6])
-            print("V PERIOD : ",W[0][7])
-            print("VI PERIOD : ",W[0][8])
-            print("VII PERIOD : ",W[0][9])
-         elif ch1 in ['thursday','Thursday']:
-            print("CODE : ",Th[0][0])
-            print("NAME : ",Th[0][1])
-            print("SUBJECT : ",Th[0][2])
-            print("I PERIOD : ",Th[0][3])
-            print("II PERIOD : ",Th[0][4])
-            print("III PERIOD : ",Th[0][5])
-            print("IV PERIOD : ",Th[0][6])
-            print("V PERIOD : ",Th[0][7])
-            print("VI PERIOD : ",Th[0][8])
-            print("VII PERIOD : ",Th[0][9])
-         elif ch1 in ['friday','Friday']:
-            print("CODE : ",F[0][0])
-            print("NAME : ",F[0][1])
-            print("SUBJECT : ",F[0][2])
-            print("I PERIOD : ",F[0][3])
-            print("II PERIOD : ",F[0][4])
-            print("III PERIOD : ",F[0][5])
-            print("IV PERIOD : ",F[0][6])
-            print("V PERIOD : ",F[0][7])
-            print("VI PERIOD : ",F[0][8])
-            print("VII PERIOD : ",F[0][9])
-         elif ch1 in ['saturday','Saturday']:
-            print("CODE : ",S[0][0])
-            print("NAME : ",S[0][1])
-            print("SUBJECT : ",S[0][2])
-            print("I PERIOD : ",S[0][3])
-            print("II PERIOD : ",S[0][4])
-            print("III PERIOD : ",S[0][5])
-            print("IV PERIOD : ",S[0][6])
-            print("V PERIOD : ",S[0][7])
-            print("VI PERIOD : ",S[0][8])
-            print("VII PERIOD : ",S[0][9])
-         else:
-            print("Please enter valid choice.")
-   if ch==2:
-      print("TIME TABLE IS AS FOLLOWS:\n")
-      print('-'*123)
-      print("PERIODS\t\tI\t\tII\t\tIII\t\tIV\t\tV\t\tVI\t\tVII")
-      print('-'*123)
-      print("MONDAY",(' ')*6,M[0][3],(' ')*9,M[0][4],(' ')*11,M[0][5],(' ')*9,M[0][6],(' ')*9,M[0][7],(' ')*9,M[0][8],(' ')*9,M[0][9])
-      print('-'*123)
-      print("TUESDAY",(' ')*5,T[0][3],(' ')*9,T[0][4],(' ')*11,T[0][5],(' ')*9,T[0][6],(' ')*9,T[0][7],(' ')*9,T[0][8],(' ')*9,T[0][9])
-      print('-'*123)
-      print("WEDNESDAY",(' ')*3,W[0][3],(' ')*9,W[0][4],(' ')*11,W[0][5],(' ')*9,W[0][6],(' ')*9,W[0][7],(' ')*9,W[0][8],(' ')*9,W[0][9])
-      print('-'*123)
-      print("THURSDAY",(' ')*4,Th[0][3],(' ')*9,Th[0][4],(' ')*11,Th[0][5],(' ')*9,Th[0][6],(' ')*9,Th[0][7],(' ')*9,Th[0][8],(' ')*11,Th[0][9])
-      print('-'*123)
-      print("FRIDAY",(' ')*6,F[0][3],(' ')*9,F[0][4],(' ')*11,F[0][5],(' ')*9,F[0][6],(' ')*9,F[0][7],(' ')*9,F[0][8],(' ')*11,F[0][9])
-      print('-'*123)
-      print("SATURDAY",(' ')*4,S[0][3],(' ')*9,S[0][4],(' ')*10,S[0][5],(' ')*8,S[0][6],(' ')*9,S[0][7],(' ')*9,S[0][8],(' ')*9,S[0][9])
-      print('-'*123,"\n")
-def delete_data(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   display(a,b)
-   code=int(input("Enter teacher's code whose data you want to delete:"))
-   query="Delete from MONDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete from TUESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete * from WEDNESDAY where T_CODE={}".format(code) 
-   cursor.execute(query)
-   connection.commit()
-   query="Delete * from THURSDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete * from FRIDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete * from SATURDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   print("RESPECTIVE TEACHER'S DATA HAS BEEN DELETED SUCCESSFULLY")
-   connection.close()
-def update_data(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   display(a,b)
-   code=int(input("Enter teacher's code whose data you want to update:"))
-   query="Select * from MONDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   M=cursor.fetchall()
-   query="Select * from TUESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   T=cursor.fetchall()
-   query="Select * from WEDNESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   W=cursor.fetchall()
-   query="Select * from THURSDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   Th=cursor.fetchall()
-   query="Select * from FRIDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   F=cursor.fetchall()
-   query="Select * from SATURDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   S=cursor.fetchall()
-   print("TIME TABLE IS AS FOLLOWS:\n")
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("PERIODS\t\tI\t\tII\t\tIII\t\tIV\t\tV\t\tVI\t\tVII")
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("MONDAY",(' ')*6,M[0][3],(' ')*9,M[0][4],(' ')*11,M[0][5],(' ')*9,M[0][6],(' ')*9,M[0][7],(' ')*9,M[0][8],(' ')*9,M[0][9])
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("TUESDAY",(' ')*5,T[0][3],(' ')*9,T[0][4],(' ')*11,T[0][5],(' ')*9,T[0][6],(' ')*9,T[0][7],(' ')*9,T[0][8],(' ')*9,T[0][9])
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("WEDNESDAY",(' ')*3,W[0][3],(' ')*9,W[0][4],(' ')*11,W[0][5],(' ')*9,W[0][6],(' ')*9,W[0][7],(' ')*9,W[0][8],(' ')*9,W[0][9])
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("THURSDAY",(' ')*4,Th[0][3],(' ')*9,Th[0][4],(' ')*11,Th[0][5],(' ')*9,Th[0][6],(' ')*9,Th[0][7],(' ')*9,Th[0][8],(' ')*11,Th[0][9])
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("FRIDAY",(' ')*6,F[0][3],(' ')*9,F[0][4],(' ')*11,F[0][5],(' ')*9,F[0][6],(' ')*9,F[0][7],(' ')*9,F[0][8],(' ')*11,F[0][9])
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   print("SATURDAY",(' ')*4,S[0][3],(' ')*9,S[0][4],(' ')*10,S[0][5],(' ')*8,S[0][6],(' ')*9,S[0][7],(' ')*9,S[0][8],(' ')*9,S[0][9])
-   print("---------------------------------------------------------------------------------------------------------------------------")
-   ch=1
-   while ch!=0:
-      print("\n",(' ')*58,"WHICH DAY DATA YOU WANT TO UPDATE?\n")
-      print((' ')*55,('-')*44)
-      print((' ')*55,"|",(' ')*12,"1.MONDAY",(' ')*18,"|")
-      print((' ')*55,"|",(' ')*12,"2.TUESDAY",(' ')*17,"|")
-      print((' ')*55,"|",(' ')*12,"3.WEDNESDAY",(' ')*15,"|")
-      print((' ')*55,"|",(' ')*12,"4.THURSDAY",(' ')*16,"|")
-      print((' ')*55,"|",(' ')*12,"5.FRIDAY",(' ')*18,"|")
-      print((' ')*55,"|",(' ')*12,"6.SATURDAY",(' ')*16,"|")
-      print((' ')*55,"|",(' ')*12,"0.EXIT",(' ')*20,"|")
-      print((' ')*55,('-')*44)
-      ch=int(input("\nEnter Your Choice : "))
-      if ch==0:
-         connection.close()
-         break
-      elif ch==1:
-         c=1
-         while c!=0:
-            print("\n",(' ')*58,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('-')*44)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17)
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16)
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15)
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16)
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17)
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16)
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15)
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21)
-            print((' ')*55,('-')*44)
-            c=int(input("Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==2:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==3:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==4:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==5:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==6:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==7:
-               val=input("Enter value to be changed with : ")
-               query="Update monday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            else:
-               print("Enter a Valid choice.")
-      elif ch==2:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('-')*44)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('-')*44)
-            if c==0:
-               break
-            elif c==1:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               print("\nValue Updated Successfully.\n")
-               connection.commit()
-            elif c==2:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==3:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==4:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==5:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==6:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==7:
-               val=input("Enter value to be changed with : ")
-               query="Update tuesday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            else:
-               print("Enter a Valid choice.")
-      elif ch==3:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('-')*44)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('-')*44)
-            if c==0:
-               break
-            elif c==1:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==2:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==3:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==4:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==5:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==6:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==7:
-               val=input("Enter value to be changed with : ")
-               query="Update wednesday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            else:
-               print("Enter a Valid choice.")
-      elif ch==4:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('-')*44)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('-')*44)
-            if c==0:
-               break
-            elif c==1:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==2:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==3:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==4:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==5:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==6:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==7:
-               val=input("Enter value to be changed with : ")
-               query="Update thursday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            else:
-               print("Enter a Valid choice.")
-      elif ch==5:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('-')*44)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('-')*44)
-            if c==0:
-               break
-            elif c==1:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==2:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==3:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==4:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==5:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==6:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==7:
-               val=input("Enter value to be changed with : ")
-               query="Update friday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            else:
-                print("Enter a Valid choice.")
-      elif ch==6:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('-')*44)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('-')*44)
-            if c==0:
-               break
-            elif c==1:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==2:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==3:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==4:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==5:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==6:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            elif c==7:
-               val=input("Enter value to be changed with : ")
-               query="Update saturday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\nValue Updated Successfully.\n")
-            else:
-               print("Enter a Valid choice.")
-      else:
-         print("\nEnter a Valid choice.\n")
-import mysql.connector as mysql
-def enter_monday(code,name,sub):
-   dm={}
-   print(('-')*144)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR MONDAY",(' ')*49,"|")
-   print(('-')*144)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("⏺ Enter class for I period:")
-   t_2=input("⏺ Enter class for II period:")
-   t_3=input("⏺ Enter class for III period:")
-   t_4=input("⏺ Enter class for IV period:")
-   t_5=input("⏺ Enter class for V period:")
-   t_6=input("⏺ Enter class for VI period:")
-   t_7=input("⏺ Enter class for VII period:")
-   dm['code']=code
-   dm['name']=name
-   dm['sub']=sub
-   dm['t1']=t_1
-   dm['t2']=t_2
-   dm['t3']=t_3
-   dm['t4']=t_4
-   dm['t5']=t_5
-   dm['t6']=t_6
-   dm['t7']=t_7
-   return dm
-def enter_tuesday(code,name,sub):
-   dt={}
-   print(('-')*144)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR TUESDAY",(' ')*48,"|")
-   print(('-')*144)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("⏺ Enter class for I period:")
-   t_2=input("⏺ Enter class for II period:")
-   t_3=input("⏺ Enter class for III period:")
-   t_4=input("⏺ Enter class for IV period:")
-   t_5=input("⏺ Enter class for V period:")
-   t_6=input("⏺ Enter class for VI period:")
-   t_7=input("⏺ Enter class for VII period:")
-   dt['code']=code
-   dt['name']=name
-   dt['sub']=sub
-   dt['t1']=t_1
-   dt['t2']=t_2
-   dt['t3']=t_3
-   dt['t4']=t_4
-   dt['t5']=t_5
-   dt['t6']=t_6
-   dt['t7']=t_7
-   return dt
-def enter_wednesday(code,name,sub):
-   dw={}
-   print(('-')*144)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR WEDNESDAY",(' ')*45,"|")
-   print(('-')*144)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("⏺ Enter class for I period:")
-   t_2=input("⏺ Enter class for II period:")
-   t_3=input("⏺ Enter class for III period:")
-   t_4=input("⏺ Enter class for IV period:")
-   t_5=input("⏺ Enter class for V period:")
-   t_6=input("⏺ Enter class for VI period:")
-   t_7=input("⏺ Enter class for VII period:")
-   dw['code']=code
-   dw['name']=name
-   dw['sub']=sub
-   dw['t1']=t_1
-   dw['t2']=t_2
-   dw['t3']=t_3
-   dw['t4']=t_4
-   dw['t5']=t_5
-   dw['t6']=t_6
-   dw['t7']=t_7
-   return dw
-def enter_thursday(code,name,sub):
-   dth={}
-   print(('-')*144)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR THURSDAY",(' ')*47,"|")
-   print(('-')*144)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("⏺ Enter class for I period:")
-   t_2=input("⏺ Enter class for II period:")
-   t_3=input("⏺ Enter class for III period:")
-   t_4=input("⏺ Enter class for IV period:")
-   t_5=input("⏺ Enter class for V period:")
-   t_6=input("⏺ Enter class for VI period:")
-   t_7=input("⏺ Enter class for VII period:")
-   dth['code']=code
-   dth['name']=name
-   dth['sub']=sub
-   dth['t1']=t_1
-   dth['t2']=t_2
-   dth['t3']=t_3
-   dth['t4']=t_4
-   dth['t5']=t_5
-   dth['t6']=t_6
-   dth['t7']=t_7
-   return dth
-def enter_friday(code,name,sub):
-   df={}
-   print(('-')*144)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR FRIDAY",(' ')*49,"|")
-   print(('-')*144)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("⏺ Enter class for I period:")
-   t_2=input("⏺ Enter class for II period:")
-   t_3=input("⏺ Enter class for III period:")
-   t_4=input("⏺ Enter class for IV period:")
-   t_5=input("⏺ Enter class for V period:")
-   t_6=input("⏺ Enter class for VI period:")
-   t_7=input("⏺ Enter class for VII period:")
-   df['code']=code
-   df['name']=name
-   df['sub']=sub
-   df['t1']=t_1
-   df['t2']=t_2
-   df['t3']=t_3
-   df['t4']=t_4
-   df['t5']=t_5
-   df['t6']=t_6
-   df['t7']=t_7
-   return df
-def enter_saturday(code,name,sub):
-   ds={}
-   print(('-')*144)
-   print("|",(' ')*58,"PLEASE ENTER DETAILS FOR SATURDAY",(' ')*47,"|")
-   print(('-')*144)
-   print()
-   print((' ')*50,"----Enter Null if you don't want to insert any value----")
-   t_1=input("⏺ Enter class for I period:")
-   t_2=input("⏺ Enter class for II period:")
-   t_3=input("⏺ Enter class for III period:")
-   t_4=input("⏺ Enter class for IV period:")
-   t_5=input("⏺ Enter class for V period:")
-   t_6=input("⏺ Enter class for VI period:")
-   t_7=input("⏺ Enter class for VII period:")
-   ds['code']=code
-   ds['name']=name
-   ds['sub']=sub
-   ds['t1']=t_1
-   ds['t2']=t_2
-   ds['t3']=t_3
-   ds['t4']=t_4
-   ds['t5']=t_5
-   ds['t6']=t_6
-   ds['t7']=t_7
-   return ds
-def display(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   query="Select * from MONDAY"
-   cursor.execute(query)
-   val=cursor.fetchall()
-   print("\n⏺⏺ Below is the information of the teachers which include their code, their name and the subject they teach. ⏺⏺\n")
-   print(('🖱')*55,"\n")
-   print("Teacher's code\t\tTeacher's name\t\tTeacher's subject")
-   for data in val:
-      print(data[0],"\t\t\t",data[1],"\t\t",data[2])
-   print("\n")
-   print(('🖱')*55)
-def create(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   t_code=int(input("⏺ Enter teacher's code:"))
-   t_name=input(("⏺ Enter teacher name:"))
-   t_sub=input("⏺ Enter subject of teacher:")
-   d1=enter_monday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS MONDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d2=enter_tuesday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS TUESDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d3=enter_wednesday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS WEDNESDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d4=enter_thursday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS THURSDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d5=enter_friday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS FRIDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   d6=enter_saturday(t_code,t_name,t_sub)
-   createTable ="CREATE TABLE IF NOT EXISTS SATURDAY(T_CODE INT,T_NAME VARCHAR(30),T_SUB VARCHAR(30),I VARCHAR(30),II VARCHAR(30),III VARCHAR(30),IV VARCHAR(30),V VARCHAR(30),VI VARCHAR(30),VII VARCHAR(30))"
-   cursor.execute(createTable)
-   query="Insert into MONDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d1['code'],d1['name'],d1['sub'],d1['t1'],d1['t2'],d1['t3'],d1['t4'],d1['t5'],d1['t6'],d1['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into TUESDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d2['code'],d2['name'],d2['sub'],d2['t1'],d2['t2'],d2['t3'],d2['t4'],d2['t5'],d2['t6'],d2['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into WEDNESDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d3['code'],d3['name'],d3['sub'],d3['t1'],d3['t2'],d3['t3'],d3['t4'],d3['t5'],d3['t6'],d3['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into THURSDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d4['code'],d4['name'],d4['sub'],d4['t1'],d4['t2'],d4['t3'],d4['t4'],d4['t5'],d4['t6'],d4['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into FRIDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d5['code'],d5['name'],d5['sub'],d5['t1'],d5['t2'],d5['t3'],d5['t4'],d5['t5'],d5['t6'],d5['t7'])
-   cursor.execute(query)
-   connection.commit()
-   query="Insert into SATURDAY(T_CODE,T_NAME,T_SUB,I,II,III,IV,V,VI,VII) values({},'{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(d6['code'],d6['name'],d6['sub'],d6['t1'],d6['t2'],d6['t3'],d6['t4'],d6['t5'],d6['t6'],d6['t7'])
-   cursor.execute(query)
-   connection.commit()
-   print("\n😃 Your values have been inserted successfully. 😃")
-def search_data(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   display(a,b)
-   code=int(input("\n⏺ Enter Teacher's code whose data you want to search:"))
-   print("\n⏺ Which details you want to see?\n")
-   print(('🕹')*20)
-   
-   print("\n1.PARTICULAR DAY")
-   print("2.WHOLE TIME TABLE\n")
-   print(('🕹')*20)
-   print("\n")
-   ch=int(input("⏺ Enter your choice:"))
-   query="Select * from MONDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   M=cursor.fetchall()
-   query="Select * from TUESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   T=cursor.fetchall()
-   query="Select * from WEDNESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   W=cursor.fetchall()
-   query="Select * from THURSDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   Th=cursor.fetchall()
-   query="Select * from FRIDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   F=cursor.fetchall()
-   query="Select * from SATURDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   S=cursor.fetchall()
-   if ch==1:
-      ch1=1
-      print("\nEnter 1 for Monday.")
-      print("Enter 2 for Tuesday.")
-      print("Enter 3 for Wednesday.")
-      print("Enter 4 for Thursday.")
-      print("Enter 5 for Friday.")
-      print("Enter 6 for Saturday.")
-      print("Enter 0 for exit\n.")
-      while ch1!=0:
-         ch1=int(input("\nEnter your choice:"))
-         if ch1==str(0):
-            break
-         elif ch1==1:
-            print(('💿')*25)
-            print("CODE        : ",M[0][0])
-            print("NAME        : ",M[0][1])
-            print("SUBJECT     : ",M[0][2])
-            print("I PERIOD    : ",M[0][3])
-            print("II PERIOD   : ",M[0][4])
-            print("III PERIOD  : ",M[0][5])
-            print("IV PERIOD   : ",M[0][6])
-            print("V PERIOD    : ",M[0][7])
-            print("VI PERIOD   : ",M[0][8])
-            print("VII PERIOD  : ",M[0][9])
-            print(('💿')*25)
-         elif ch1==2:
-            print(('💿')*25)
-            print("CODE        : ",T[0][0])
-            print("NAME        : ",T[0][1])
-            print("SUBJECT     : ",T[0][2])
-            print("I PERIOD    : ",T[0][3])
-            print("II PERIOD   : ",T[0][4])
-            print("III PERIOD  : ",T[0][5])
-            print("IV PERIOD   : ",T[0][6])
-            print("V PERIOD    : ",T[0][7])
-            print("VI PERIOD   : ",T[0][8])
-            print("VII PERIOD  : ",T[0][9])
-            print(('💿')*25)
-         elif ch1==3:
-            print(('💿')*25)
-            print("CODE        : ",W[0][0])
-            print("NAME        : ",W[0][1])
-            print("SUBJECT     : ",W[0][2])
-            print("I PERIOD    : ",W[0][3])
-            print("II PERIOD   : ",W[0][4])
-            print("III PERIOD  : ",W[0][5])
-            print("IV PERIOD   : ",W[0][6])
-            print("V PERIOD    : ",W[0][7])
-            print("VI PERIOD   : ",W[0][8])
-            print("VII PERIOD  : ",W[0][9])
-            print(('💿')*25)
-         elif ch1==4:
-            print(('💿')*25)
-            print("CODE        : ",Th[0][0])
-            print("NAME        : ",Th[0][1])
-            print("SUBJECT     : ",Th[0][2])
-            print("I PERIOD    : ",Th[0][3])
-            print("II PERIOD   : ",Th[0][4])
-            print("III PERIOD  : ",Th[0][5])
-            print("IV PERIOD   : ",Th[0][6])
-            print("V PERIOD    : ",Th[0][7])
-            print("VI PERIOD   : ",Th[0][8])
-            print("VII PERIOD  : ",Th[0][9])
-            print(('💿')*25)
-         elif ch1==5:
-            print(('💿')*25)
-            print("CODE        : ",F[0][0])
-            print("NAME        : ",F[0][1])
-            print("SUBJECT     : ",F[0][2])
-            print("I PERIOD    : ",F[0][3])
-            print("II PERIOD   : ",F[0][4])
-            print("III PERIOD  : ",F[0][5])
-            print("IV PERIOD   : ",F[0][6])
-            print("V PERIOD    : ",F[0][7])
-            print("VI PERIOD   : ",F[0][8])
-            print("VII PERIOD  : ",F[0][9])
-            print(('💿')*25)
-         elif ch1==6:
-            print(('💿')*25)
-            print("CODE        : ",S[0][0])
-            print("NAME        : ",S[0][1])
-            print("SUBJECT     : ",S[0][2])
-            print("I PERIOD    : ",S[0][3])
-            print("II PERIOD   : ",S[0][4])
-            print("III PERIOD  : ",S[0][5])
-            print("IV PERIOD   : ",S[0][6])
-            print("V PERIOD    : ",S[0][7])
-            print("VI PERIOD   : ",S[0][8])
-            print("VII PERIOD  : ",S[0][9])
-            print(('💿')*25)
-         else:
-            print("Please enter valid choice.")
-   if ch==2:
-      print("⏺ TIME TABLE IS AS FOLLOWS:\n")
-      print('-'*123)
-      print("PERIODS\t\tI\t\tII\t\tIII\t\tIV\t\tV\t\tVI\t\tVII")
-      print('-'*123)
-      print("MONDAY",(' ')*5,M[0][3],(' ')*9,M[0][4],(' ')*11,M[0][5],(' ')*9,M[0][6],(' ')*9,M[0][7],(' ')*9,M[0][8],(' ')*9,M[0][9])
-      print('-'*123)
-      print("TUESDAY",(' ')*5,T[0][3],(' ')*9,T[0][4],(' ')*11,T[0][5],(' ')*9,T[0][6],(' ')*9,T[0][7],(' ')*9,T[0][8],(' ')*9,T[0][9])
-      print('-'*123)
-      print("WEDNESDAY",(' ')*3,W[0][3],(' ')*9,W[0][4],(' ')*11,W[0][5],(' ')*9,W[0][6],(' ')*9,W[0][7],(' ')*9,W[0][8],(' ')*9,W[0][9])
-      print('-'*123)
-      print("THURSDAY",(' ')*4,Th[0][3],(' ')*9,Th[0][4],(' ')*11,Th[0][5],(' ')*9,Th[0][6],(' ')*9,Th[0][7],(' ')*9,Th[0][8],(' ')*11,Th[0][9])
-      print('-'*123)
-      print("FRIDAY",(' ')*6,F[0][3],(' ')*9,F[0][4],(' ')*11,F[0][5],(' ')*9,F[0][6],(' ')*9,F[0][7],(' ')*9,F[0][8],(' ')*11,F[0][9])
-      print('-'*123)
-      print("SATURDAY",(' ')*4,S[0][3],(' ')*9,S[0][4],(' ')*10,S[0][5],(' ')*8,S[0][6],(' ')*9,S[0][7],(' ')*9,S[0][8],(' ')*9,S[0][9])
-      print('-'*123,"\n")
-def delete_data(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   display(a,b)
-   code=int(input("Enter teacher's code whose data you want to delete:"))
-   query="Delete from MONDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete from TUESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete from WEDNESDAY where T_CODE={}".format(code) 
-   cursor.execute(query)
-   connection.commit()
-   query="Delete from THURSDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete from FRIDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   query="Delete from SATURDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   connection.commit()
-   print(('💿')*50)
-   print("\n😃 RESPECTIVE TEACHER'S DATA HAS BEEN DELETED SUCCESSFULLY 😃\n")
-   print(('💿')*50)
-   connection.close()
-def update_data(a,b):
-   connection=mysql.connect(host="localhost",user=a,passwd=b,database="TIMETABLE")
-   cursor=connection.cursor(buffered=True)
-   display(a,b)
-   code=int(input("\n⏺️ Enter teacher's code whose data you want to update:"))
-   query="Select * from MONDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   M=cursor.fetchall()
-   query="Select * from TUESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   T=cursor.fetchall()
-   query="Select * from WEDNESDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   W=cursor.fetchall()
-   query="Select * from THURSDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   Th=cursor.fetchall()
-   query="Select * from FRIDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   F=cursor.fetchall()
-   query="Select * from SATURDAY where T_CODE={}".format(code)
-   cursor.execute(query)
-   S=cursor.fetchall()
-   print("⏺ TIME TABLE IS AS FOLLOWS:\n")
-   print('-'*123)
-   print("PERIODS\t\tI\t\tII\t\tIII\t\tIV\t\tV\t\tVI\t\tVII")
-   print('-'*123)
-   print("MONDAY",(' ')*6,M[0][3],(' ')*9,M[0][4],(' ')*11,M[0][5],(' ')*9,M[0][6],(' ')*9,M[0][7],(' ')*9,M[0][8],(' ')*9,M[0][9])
-   print('-'*123)
-   print("TUESDAY",(' ')*5,T[0][3],(' ')*9,T[0][4],(' ')*11,T[0][5],(' ')*9,T[0][6],(' ')*9,T[0][7],(' ')*9,T[0][8],(' ')*9,T[0][9])
-   print('-'*123)
-   print("WEDNESDAY",(' ')*3,W[0][3],(' ')*9,W[0][4],(' ')*11,W[0][5],(' ')*9,W[0][6],(' ')*9,W[0][7],(' ')*9,W[0][8],(' ')*9,W[0][9])
-   print('-'*123)
-   print("THURSDAY",(' ')*4,Th[0][3],(' ')*9,Th[0][4],(' ')*11,Th[0][5],(' ')*9,Th[0][6],(' ')*9,Th[0][7],(' ')*9,Th[0][8],(' ')*11,Th[0][9])
-   print('-'*123)
-   print("FRIDAY",(' ')*6,F[0][3],(' ')*9,F[0][4],(' ')*11,F[0][5],(' ')*9,F[0][6],(' ')*9,F[0][7],(' ')*9,F[0][8],(' ')*11,F[0][9])
-   print('-'*123)
-   print("SATURDAY",(' ')*4,S[0][3],(' ')*9,S[0][4],(' ')*10,S[0][5],(' ')*8,S[0][6],(' ')*9,S[0][7],(' ')*9,S[0][8],(' ')*9,S[0][9])
-   print('-'*123,"\n")
-   ch=1
-   while ch!=0:
-      print("\n",(' ')*58,"WHICH DAY DATA YOU WANT TO UPDATE?\n")
-      print((' ')*55,('🖥')*25)
-      print((' ')*55,"|",(' ')*12,"1.MONDAY",(' ')*18,"|")
-      print((' ')*55,"|",(' ')*12,"2.TUESDAY",(' ')*17,"|")
-      print((' ')*55,"|",(' ')*12,"3.WEDNESDAY",(' ')*15,"|")
-      print((' ')*55,"|",(' ')*12,"4.THURSDAY",(' ')*16,"|")
-      print((' ')*55,"|",(' ')*12,"5.FRIDAY",(' ')*18,"|")
-      print((' ')*55,"|",(' ')*12,"6.SATURDAY",(' ')*16,"|")
-      print((' ')*55,"|",(' ')*12,"0.EXIT",(' ')*20,"|")
-      print((' ')*55,('🖥')*25)
-      print("\n⏺⏺ ENTER NULL IN CASE YOU WANT TO ASSIGN ARRANGEMENT. ⏺⏺")
-      print("\n⏺⏺ PRESS 0 IN CASE YOU DO NOT WANT TO UPDATE FURTHER. ⏺⏺")
-      ch=int(input("\nEnter Your Choice : "))
-      if ch==0:
-         connection.close()
-         break
-      elif ch==1:
-         c=1
-         while c!=0:
-            print("\n",(' ')*58,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('🖥')*25)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('🖥')*25)
-            c=int(input("\n⏺️ Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==2:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==3:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==4:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==5:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==6:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==7:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update monday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            else:
-               print("⏺️ Enter a Valid choice.")
-      elif ch==2:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('🖥')*25)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('🖥')*25)
-            c=int(input("\n⏺️ Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               print("\n😃 Value Updated Successfully. 😃\n")
-               connection.commit()
-            elif c==2:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==3:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==4:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==5:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==6:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==7:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update tuesday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            else:
-               print("⏺️ Enter a Valid choice.")
-      elif ch==3:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('🖥')*25)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('🖥')*25)
-            c=int(input("\n⏺️ Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==2:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==3:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==4:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==5:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==6:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==7:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update wednesday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            else:
-               print("⏺️ Enter a Valid choice.")
-      elif ch==4:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('🖥')*25)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('🖥')*25)
-            c=int(input("\n⏺️ Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==2:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==3:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==4:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==5:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==6:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==7:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update thursday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            else:
-               print("⏺️ Enter a Valid choice.")
-      elif ch==5:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('🖥')*25)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('🖥')*25)
-            c=int(input("\n⏺️ Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==2:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==3:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==4:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==5:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==6:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==7:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update friday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            else:
-                print("⏺️ Enter a Valid choice.")
-      elif ch==6:
-         c=1
-         while c!=0:
-            print("\n",(' ')*55,"WHICH PERIOD DATA TOU WANT TO UPDATE?\n")
-            print((' ')*55,('🖥')*25)
-            print((' ')*55,"|",(' ')*11,"1.I PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"2.II PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"3.III PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"4.IV PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"5.V PERIOD",(' ')*17,"|")
-            print((' ')*55,"|",(' ')*11,"6.VI PERIOD",(' ')*16,"|")
-            print((' ')*55,"|",(' ')*11,"7.VII PERIOD",(' ')*15,"|")
-            print((' ')*55,"|",(' ')*11,"0.EXIT",(' ')*21,"|")
-            print((' ')*55,('🖥')*25)
-            c=int(input("\n⏺️ Enter your choice:"))
-            if c==0:
-               break
-            elif c==1:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set I='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==2:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set II='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==3:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set III='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==4:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set IV='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==5:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set V='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==6:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set VI='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            elif c==7:
-               val=input("⏺️ Enter value to be changed with : ")
-               query="Update saturday set VII='{}' where T_CODE={}".format(val,code)
-               cursor.execute(query)
-               connection.commit()
-               print("\n😃 Value Updated Successfully. 😃\n")
-            else:
-               print("⏺️ Enter a Valid choice.")
-      else:
-         print("\n⏺️ Enter a Valid choice.\n")
-def MYSQLconnection():
-   userName = input("\n⏺️ ENTER MYSQL SERVER'S USERNAME : ")
-   password = input("\n⏺️ ENTER MYSQL SERVER'S PASSWORD : ")
-   myConnection=mysql.connect(host="localhost",user=userName,passwd=password )
-   if myConnection:
-       print("\n😃 CONGRATULATIONS ! YOUR MYSQL CONNECTION HAS BEEN ESTABLISHED ! 😃\n")
-       cursor=myConnection.cursor()
-       cursor.execute("CREATE DATABASE IF NOT EXISTS TIMETABLE")
-       cursor.execute("COMMIT")
-       cursor.close()
-       return userName,password
-   else:
-       return 0,1
-def main():
-   a,b=MYSQLconnection()
-   if a!=0:
-      while True:
-         print("\n")
-         print((' ')*55,('🖥')*26)
-         print((' ')*55,"|",(' ')*6,"1--->ENTER TEACHER DETAILS",(' ')*7,"|")
-         print((' ')*55,"|",(' ')*6,"2--->TEACHER INFORMATION",(' ')*9,"|")
-         print((' ')*55,"|",(' ')*6,"3--->SEE TIMETABLE",(' ')*15,"|")
-         print((' ')*55,"|",(' ')*6,"4--->DELETE TEACHER DETAILS",(' ')*6,"|")
-         print((' ')*55,"|",(' ')*6,"5--->ASSIGN CLASS TO A TEACHER",(' ')*3,"|")
-         print((' ')*55,"|",(' ')*6,"0--->EXIT",(' ')*24,"|")
-         print((' ')*55,('🖥')*26)
-         print("\n") 
-         choice = int(input("⏺️ Enter Your Choice:"))
-         if choice==1:
-            create(a,b)
-         elif choice==2:
-            display(a,b)
-         elif choice==3:
-            search_data(a,b)
-         elif choice==4:
-            delete_data(a,b)
-         elif choice==5:
-            update_data(a,b)
-         elif choice==0:
-            print("\n🙏🏻 THANKS FOR YOUR PRECIOUS TIME. 🙏🏻\n")
-            break
-         else:
-            print(" Sorry, May Be You Are Giving Me Wrong Input. Please Try Again!!  ")
-   else:
-      print("\nERROR ESTABLISHING MYSQL CONNECTION !")
-main()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Timetable Manager · Teacher dashboard</title>
+    <!-- Font Awesome (icons) & Google Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #f4f7fc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+        .app-card {
+            max-width: 1300px;
+            width: 100%;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,20,40,0.12);
+            padding: 2.5rem 2rem;
+            transition: 0.2s;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #eef2f7;
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-weight: 600;
+            font-size: 2rem;
+            color: #0b1c33;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header h1 i {
+            color: #2a6df4;
+            font-size: 2.2rem;
+        }
+        .badge-connection {
+            background: #e3f0ff;
+            color: #1a5bc7;
+            padding: 0.5rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #c3dbff;
+        }
+        .badge-connection i {
+            font-size: 1.2rem;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin: 2rem 0 2.5rem 0;
+        }
+        .menu-btn {
+            background: #f8faff;
+            border: 1px solid #e6edf8;
+            border-radius: 30px;
+            padding: 1.2rem 0.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1f2a44;
+            transition: 0.15s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .menu-btn i {
+            font-size: 1.5rem;
+            color: #2a6df4;
+            width: 1.8rem;
+        }
+        .menu-btn:hover {
+            background: #e8f0fe;
+            border-color: #b6cef0;
+            transform: scale(1.02);
+            box-shadow: 0 8px 14px rgba(42,109,244,0.08);
+        }
+        .menu-btn.exit-btn {
+            background: #fff2f0;
+            border-color: #ffcec9;
+            color: #b33a2e;
+        }
+        .menu-btn.exit-btn i {
+            color: #c94a3c;
+        }
+        .menu-btn.exit-btn:hover {
+            background: #ffe2de;
+        }
+        .panel {
+            background: #fafcff;
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #eef4fa;
+            margin-top: 1.5rem;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.01);
+        }
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: #0b1c33;
+            margin-bottom: 1.6rem;
+        }
+        .panel-title i {
+            color: #2a6df4;
+        }
+        .teacher-table-wrap {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th {
+            text-align: left;
+            padding: 14px 8px;
+            background: #eef5fe;
+            color: #1a3a6b;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #e3eaf3;
+        }
+        .badge-subject {
+            background: #dde9fd;
+            color: #1f4e9e;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px 20px;
+            background: #f2f8ff;
+            padding: 1.2rem 1.5rem;
+            border-radius: 60px;
+            margin: 20px 0 12px 0;
+        }
+        .input-group label {
+            font-weight: 500;
+            color: #1e3b66;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .input-group input, .input-group select {
+            border: 1px solid #d2dff0;
+            border-radius: 40px;
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            background: white;
+            min-width: 160px;
+            outline: none;
+            transition: 0.1s;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: #2a6df4;
+            box-shadow: 0 0 0 3px rgba(42,109,244,0.15);
+        }
+        .action-btn {
+            background: #2a6df4;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.15s;
+            border: 1px solid #1f5ad4;
+        }
+        .action-btn i {
+            font-size: 1rem;
+        }
+        .action-btn:hover {
+            background: #1b5bd0;
+            transform: scale(1.01);
+        }
+        .action-btn-outline {
+            background: transparent;
+            border: 1px solid #b8cef0;
+            color: #1f3d6b;
+        }
+        .action-btn-outline:hover {
+            background: #e9f1fd;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 30px;
+            align-items: center;
+        }
+        .day-timetable {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid #e5edf7;
+            margin-top: 1.2rem;
+        }
+        .period-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .period-item {
+            background: #f2f9ff;
+            border-radius: 20px;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #dbe6f5;
+        }
+        .period-item span {
+            display: block;
+            font-weight: 400;
+            color: #445e7e;
+            font-size: 0.8rem;
+        }
+        .mt-3 { margin-top: 1.2rem; }
+        .text-muted { color: #5d7599; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .emoji-big { font-size: 1.6rem; vertical-align: middle; }
+        @media (max-width: 640px) {
+            .app-card { padding: 1.5rem 0.8rem; }
+            .header h1 { font-size: 1.6rem; }
+            .menu-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-card" id="app">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1><i class="fas fa-chalkboard-teacher"></i> Timetable Manager</h1>
+        <div class="badge-connection">
+            <i class="fas fa-plug"></i> MySQL <span style="font-weight:700;color:#0f3e8a;">●</span> connected
+        </div>
+    </div>
+
+    <!-- MENU (MAIN FUNCTIONS) -->
+    <div class="menu-grid">
+        <div class="menu-btn" @click="activePanel='create'"><i class="fas fa-plus-circle"></i> Add Teacher</div>
+        <div class="menu-btn" @click="activePanel='display'"><i class="fas fa-list-ul"></i> Teacher Info</div>
+        <div class="menu-btn" @click="activePanel='search'"><i class="fas fa-calendar-alt"></i> Timetable</div>
+        <div class="menu-btn" @click="activePanel='delete'"><i class="fas fa-trash-alt"></i> Delete</div>
+        <div class="menu-btn" @click="activePanel='update'"><i class="fas fa-pen"></i> Assign / Update</div>
+        <div class="menu-btn exit-btn" @click="exitApp()"><i class="fas fa-sign-out-alt"></i> Exit</div>
+    </div>
+
+    <!-- ========== DYNAMIC PANELS ========== -->
+    <div class="panel" v-show="activePanel==='create'">
+        <div class="panel-title"><i class="fas fa-user-plus"></i> Enter teacher details</div>
+        <div class="input-group">
+            <label><i class="fas fa-id-badge"></i> Code</label>
+            <input type="number" v-model="newTeacher.code" placeholder="101">
+            <label><i class="fas fa-user"></i> Name</label>
+            <input v-model="newTeacher.name" placeholder="Dr. Sharma">
+            <label><i class="fas fa-book"></i> Subject</label>
+            <input v-model="newTeacher.subject" placeholder="Mathematics">
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin:8px 0 12px 0;">
+            <button class="action-btn" @click="createTeacher()"><i class="fas fa-save"></i> Create & fill timetable</button>
+            <span class="text-muted" style="align-self:center; font-size:0.9rem;"><i class="fas fa-info-circle"></i> You'll be prompted for each day (7 periods)</span>
+        </div>
+        <!-- quick preview of periods (mock) -->
+        <div v-if="showPeriodPrompt" class="day-timetable" style="background:#f5faff;">
+            <div class="flex-between"><strong><i class="fas fa-clock"></i> Enter periods for each day</strong> <span class="badge-subject">step 2/2</span></div>
+            <div v-for="(day,idx) in days" :key="idx" style="margin-top:16px; border-top:1px dashed #d0def0; padding-top:12px;">
+                <strong style="display:block; margin-bottom:6px;">{{ day.name }}</strong>
+                <div class="period-grid">
+                    <div v-for="p in 7" :key="p" class="period-item">
+                        <span>Period {{ p }}</span>
+                        <input v-model="dayPeriods[day.key][p-1]" placeholder="e.g. Math" style="width:100%; border:1px solid #d2dff0; border-radius:30px; padding:6px 8px; margin-top:6px; background:white;">
+                    </div>
+                </div>
+            </div>
+            <button class="action-btn" style="margin-top:20px;" @click="submitFullTeacher()"><i class="fas fa-check-circle"></i> Save all periods</button>
+        </div>
+        <div v-if="createMessage" style="margin-top:18px; background:#e4f3e0; padding:12px 24px; border-radius:60px; color:#1c6b3a;"><i class="fas fa-check-circle"></i> {{ createMessage }}</div>
+    </div>
+
+    <!-- DISPLAY TEACHER INFO -->
+    <div class="panel" v-show="activePanel==='display'">
+        <div class="panel-title"><i class="fas fa-users"></i> Teacher directory</div>
+        <div class="teacher-table-wrap">
+            <table>
+                <thead><tr><th>Code</th><th>Name</th><th>Subject</th><th style="text-align:right;">Action</th></tr></thead>
+                <tbody>
+                    <tr v-for="t in teachers" :key="t.code">
+                        <td><strong>{{ t.code }}</strong></td>
+                        <td>{{ t.name }}</td>
+                        <td><span class="badge-subject">{{ t.subject }}</span></td>
+                        <td style="text-align:right;"><i class="fas fa-chevron-right" style="color:#7b98c7;"></i></td>
+                    </tr>
+                    <tr v-if="teachers.length===0"><td colspan="4" style="text-align:center; color:#889bbd;">No teachers added yet</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:1.2rem;"><i class="fas fa-database text-muted"></i> <span class="text-muted">{{ teachers.length }} records</span></div>
+    </div>
+
+    <!-- SEARCH / TIMETABLE -->
+    <div class="panel" v-show="activePanel==='search'">
+        <div class="panel-title"><i class="fas fa-search"></i> View timetable</div>
+        <div class="flex-row">
+            <div class="input-group" style="border-radius:60px; background:#eff6fe; padding:0.8rem 1.8rem;">
+                <label><i class="fas fa-id-card"></i> Teacher code</label>
+                <input type="number" v-model="searchCode" placeholder="101">
+                <button class="action-btn" @click="fetchTimetable()"><i class="fas fa-eye"></i> Show</button>
+            </div>
+            <span class="text-muted" style="font-size:0.9rem;"><i class="fas fa-arrow-right"></i> See whole week or specific day</span>
+        </div>
+        <div v-if="timetableData" class="day-timetable">
+            <div class="flex-between">
+                <span><i class="fas fa-user-graduate"></i> <strong>{{ timetableData.name }}</strong> ({{ timetableData.subject }})</span>
+                <span class="badge-subject">Code: {{ timetableData.code }}</span>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin:12px 0;">
+                <button class="action-btn action-btn-outline" @click="viewDay('monday')">Monday</button>
+                <button class="action-btn action-btn-outline" @click="viewDay('tuesday')">Tuesday</button>
+                <button class="action-btn action-btn-outline" @click="viewDay('wednesday')">Wednesday</button>
+                <button class="action-btn action-btn-outline" @click="viewDay('thursday')">Thursday</button>
+                <button class="action-btn action-btn-outline" @click="viewDay('friday')">Friday</button>
+                <button class="action-btn action-btn-outline" @click="viewDay('saturday')">Saturday</button>
+                <button class="action-btn" @click="viewDay('all')"><i class="fas fa-calendar-week"></i> Whole week</button>
+            </div>
+            <div v-if="selectedDayView" style="margin-top:10px;">
+                <div v-if="selectedDayView==='all'" class="period-grid" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+                    <div v-for="(p,idx) in timetableData.monday" :key="'mon'+idx" class="period-item"><span>Mon P{{idx+1}}</span>{{ p || '—' }}</div>
+                    <div v-for="(p,idx) in timetableData.tuesday" :key="'tue'+idx" class="period-item"><span>Tue P{{idx+1}}</span>{{ p || '—' }}</div>
+                    <div v-for="(p,idx) in timetableData.wednesday" :key="'wed'+idx" class="period-item"><span>Wed P{{idx+1}}</span>{{ p || '—' }}</div>
+                    <div v-for="(p,idx) in timetableData.thursday" :key="'thu'+idx" class="period-item"><span>Thu P{{idx+1}}</span>{{ p || '—' }}</div>
+                    <div v-for="(p,idx) in timetableData.friday" :key="'fri'+idx" class="period-item"><span>Fri P{{idx+1}}</span>{{ p || '—' }}</div>
+                    <div v-for="(p,idx) in timetableData.saturday" :key="'sat'+idx" class="period-item"><span>Sat P{{idx+1}}</span>{{ p || '—' }}</div>
+                </div>
+                <div v-else class="period-grid">
+                    <div v-for="(p,idx) in dayViewPeriods" :key="idx" class="period-item"><span>P{{idx+1}}</span>{{ p || '—' }}</div>
+                </div>
+            </div>
+        </div>
+        <div v-if="timetableError" style="color:#b33a2e; background:#ffeae7; padding:12px 24px; border-radius:60px; margin-top:1rem;">{{ timetableError }}</div>
+    </div>
+
+    <!-- DELETE -->
+    <div class="panel" v-show="activePanel==='delete'">
+        <div class="panel-title"><i class="fas fa-trash"></i> Delete teacher</div>
+        <div class="flex-row">
+            <div class="input-group" style="border-radius:60px;">
+                <label><i class="fas fa-id-badge"></i> Teacher code</label>
+                <input type="number" v-model="deleteCode" placeholder="101">
+                <button class="action-btn" style="background:#c94a3c;" @click="deleteTeacher()"><i class="fas fa-trash-alt"></i> Delete permanently</button>
+            </div>
+        </div>
+        <div v-if="deleteMessage" style="margin-top:16px; background:#fff1ef; padding:10px 24px; border-radius:60px; color:#9e3b2e;">{{ deleteMessage }}</div>
+    </div>
+
+    <!-- UPDATE / ASSIGN -->
+    <div class="panel" v-show="activePanel==='update'">
+        <div class="panel-title"><i class="fas fa-pen-fancy"></i> Assign class / update period</div>
+        <div class="flex-row" style="margin-bottom:12px;">
+            <div class="input-group" style="border-radius:60px;">
+                <label><i class="fas fa-id-card"></i> Teacher code</label>
+                <input type="number" v-model="updateCode" placeholder="101">
+                <button class="action-btn" @click="loadUpdateData()"><i class="fas fa-edit"></i> Load timetable</button>
+            </div>
+        </div>
+        <div v-if="updateTimetable" class="day-timetable">
+            <div><strong>{{ updateTimetable.name }}</strong> ({{ updateTimetable.subject }}) <span class="badge-subject">code {{ updateTimetable.code }}</span></div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin:12px 0;">
+                <button v-for="(day,key) in dayNames" :key="key" class="action-btn action-btn-outline" @click="selectUpdateDay(key)">{{ day }}</button>
+            </div>
+            <div v-if="selectedUpdateDay" style="margin-top:12px; background:#f5f9ff; padding:1rem; border-radius:30px;">
+                <strong>{{ selectedUpdateDayName }}</strong>
+                <div class="period-grid">
+                    <div v-for="(p,idx) in updatePeriods" :key="idx" class="period-item">
+                        <span>P{{ idx+1 }}</span>
+                        <input v-model="updatePeriods[idx]" placeholder="class" style="width:100%; border-radius:30px; border:1px solid #d2dff0; padding:6px; margin-top:4px;">
+                    </div>
+                </div>
+                <button class="action-btn" style="margin-top:16px;" @click="saveUpdatePeriods()"><i class="fas fa-save"></i> Update periods</button>
+            </div>
+            <div v-if="updateMsg" style="margin-top:12px; background:#e4f3e0; padding:8px 20px; border-radius:60px;">{{ updateMsg }}</div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div style="margin-top:2.5rem; border-top:1px solid #eef2f7; padding-top:1.5rem; display:flex; justify-content:space-between; flex-wrap:wrap; color:#6a7f9e; font-size:0.9rem;">
+        <span><i class="fas fa-code"></i> Timetable v1.0 · demo UI</span>
+        <span><i class="fas fa-clock"></i> {{ new Date().toLocaleDateString('en-IN', { weekday:'short', year:'numeric', month:'short', day:'numeric' }) }}</span>
+    </div>
+</div>
+
+<!-- Vue & logic -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    (function(){
+        new Vue({
+            el: '#app',
+            data: {
+                activePanel: 'display',
+                teachers: [
+                    { code: 101, name: 'Dr. Anita Sharma', subject: 'Mathematics' },
+                    { code: 202, name: 'Mr. Ravi Kumar', subject: 'Physics' },
+                    { code: 303, name: 'Ms. Neha Singh', subject: 'Computer Science' }
+                ],
+                // create
+                newTeacher: { code: '', name: '', subject: '' },
+                showPeriodPrompt: false,
+                days: [
+                    { key: 'monday', name: 'Monday' },
+                    { key: 'tuesday', name: 'Tuesday' },
+                    { key: 'wednesday', name: 'Wednesday' },
+                    { key: 'thursday', name: 'Thursday' },
+                    { key: 'friday', name: 'Friday' },
+                    { key: 'saturday', name: 'Saturday' }
+                ],
+                dayPeriods: {
+                    monday: ['','','','','','',''],
+                    tuesday: ['','','','','','',''],
+                    wednesday: ['','','','','','',''],
+                    thursday: ['','','','','','',''],
+                    friday: ['','','','','','',''],
+                    saturday: ['','','','','','','']
+                },
+                createMessage: '',
+                // display
+                // search
+                searchCode: '',
+                timetableData: null,
+                timetableError: '',
+                selectedDayView: null,
+                dayViewPeriods: [],
+                // delete
+                deleteCode: '',
+                deleteMessage: '',
+                // update
+                updateCode: '',
+                updateTimetable: null,
+                updatePeriods: ['','','','','','',''],
+                selectedUpdateDay: null,
+                selectedUpdateDayName: '',
+                updateMsg: '',
+                dayNames: { monday:'Monday', tuesday:'Tuesday', wednesday:'Wednesday', thursday:'Thursday', friday:'Friday', saturday:'Saturday' }
+            },
+            methods: {
+                // CREATE teacher + periods (simulate)
+                createTeacher() {
+                    if (!this.newTeacher.code || !this.newTeacher.name || !this.newTeacher.subject) {
+                        this.createMessage = '⚠️ Please fill all fields (code, name, subject)';
+                        return;
+                    }
+                    // check duplicate
+                    if (this.teachers.find(t => t.code == this.newTeacher.code)) {
+                        this.createMessage = '⚠️ Teacher code already exists.';
+                        return;
+                    }
+                    this.showPeriodPrompt = true;
+                    this.createMessage = '📝 Now fill periods for each day and click "Save all periods"';
+                },
+                submitFullTeacher() {
+                    // validate all periods filled? optional
+                    const newT = {
+                        code: Number(this.newTeacher.code),
+                        name: this.newTeacher.name,
+                        subject: this.newTeacher.subject,
+                        monday: [...this.dayPeriods.monday],
+                        tuesday: [...this.dayPeriods.tuesday],
+                        wednesday: [...this.dayPeriods.wednesday],
+                        thursday: [...this.dayPeriods.thursday],
+                        friday: [...this.dayPeriods.friday],
+                        saturday: [...this.dayPeriods.saturday]
+                    };
+                    this.teachers.push({ code: newT.code, name: newT.name, subject: newT.subject });
+                    // store full timetable (for demo we keep in a map)
+                    if (!window._timetableMap) window._timetableMap = {};
+                    window._timetableMap[newT.code] = newT;
+                    this.createMessage = `✅ Teacher ${newT.name} (${newT.code}) added with timetable.`;
+                    this.showPeriodPrompt = false;
+                    this.newTeacher = { code: '', name: '', subject: '' };
+                    // reset periods
+                    this.days.forEach(d => { this.dayPeriods[d.key] = ['','','','','','','']; });
+                },
+                // DISPLAY is just binding
+                // SEARCH
+                fetchTimetable() {
+                    const code = Number(this.searchCode);
+                    this.timetableError = '';
+                    this.timetableData = null;
+                    this.selectedDayView = null;
+                    // check teacher exists
+                    const teacher = this.teachers.find(t => t.code === code);
+                    if (!teacher) {
+                        this.timetableError = '❌ Teacher not found.';
+                        return;
+                    }
+                    // get timetable from map or create default
+                    let tt = window._timetableMap ? window._timetableMap[code] : null;
+                    if (!tt) {
+                        // build default empty
+                        tt = {
+                            code: code,
+                            name: teacher.name,
+                            subject: teacher.subject,
+                            monday: ['','','','','','',''],
+                            tuesday: ['','','','','','',''],
+                            wednesday: ['','','','','','',''],
+                            thursday: ['','','','','','',''],
+                            friday: ['','','','','','',''],
+                            saturday: ['','','','','','','']
+                        };
+                        if (!window._timetableMap) window._timetableMap = {};
+                        window._timetableMap[code] = tt;
+                    }
+                    this.timetableData = tt;
+                    this.selectedDayView = null;
+                },
+                viewDay(dayKey) {
+                    if (!this.timetableData) return;
+                    if (dayKey === 'all') {
+                        this.selectedDayView = 'all';
+                        return;
+                    }
+                    this.selectedDayView = dayKey;
+                    const periods = this.timetableData[dayKey] || ['','','','','','',''];
+                    this.dayViewPeriods = periods;
+                },
+                // DELETE
+                deleteTeacher() {
+                    const code = Number(this.deleteCode);
+                    const idx = this.teachers.findIndex(t => t.code === code);
+                    if (idx === -1) {
+                        this.deleteMessage = '❌ Teacher not found.';
+                        return;
+                    }
+                    this.teachers.splice(idx, 1);
+                    if (window._timetableMap) delete window._timetableMap[code];
+                    this.deleteMessage = `🗑️ Teacher code ${code} removed.`;
+                    this.deleteCode = '';
+                },
+                // UPDATE
+                loadUpdateData() {
+                    const code = Number(this.updateCode);
+                    const teacher = this.teachers.find(t => t.code === code);
+                    if (!teacher) {
+                        this.updateMsg = '❌ Teacher not found.';
+                        this.updateTimetable = null;
+                        return;
+                    }
+                    let tt = window._timetableMap ? window._timetableMap[code] : null;
+                    if (!tt) {
+                        tt = {
+                            code: code,
+                            name: teacher.name,
+                            subject: teacher.subject,
+                            monday: ['','','','','','',''],
+                            tuesday: ['','','','','','',''],
+                            wednesday: ['','','','','','',''],
+                            thursday: ['','','','','','',''],
+                            friday: ['','','','','','',''],
+                            saturday: ['','','','','','','']
+                        };
+                        if (!window._timetableMap) window._timetableMap = {};
+                        window._timetableMap[code] = tt;
+                    }
+                    this.updateTimetable = tt;
+                    this.selectedUpdateDay = null;
+                    this.updateMsg = `📋 Loaded ${tt.name}`;
+                },
+                selectUpdateDay(dayKey) {
+                    this.selectedUpdateDay = dayKey;
+                    this.selectedUpdateDayName = this.dayNames[dayKey] || dayKey;
+                    const periods = this.updateTimetable[dayKey] || ['','','','','','',''];
+                    this.updatePeriods = [...periods];
+                },
+                saveUpdatePeriods() {
+                    if (!this.selectedUpdateDay || !this.updateTimetable) return;
+                    this.updateTimetable[this.selectedUpdateDay] = [...this.updatePeriods];
+                    // update map
+                    if (window._timetableMap) {
+                        window._timetableMap[this.updateTimetable.code] = this.updateTimetable;
+                    }
+                    this.updateMsg = `✅ ${this.selectedUpdateDayName} updated.`;
+                },
+                exitApp() {
+                    if (confirm('Exit Timetable Manager?')) {
+                        this.activePanel = 'display';
+                        this.createMessage = '';
+                        this.deleteMessage = '';
+                        this.timetableData = null;
+                        this.updateTimetable = null;
+                    }
+                }
+            },
+            mounted() {
+                // prefill timetable map for demo
+                if (!window._timetableMap) window._timetableMap = {};
+                this.teachers.forEach(t => {
+                    if (!window._timetableMap[t.code]) {
+                        window._timetableMap[t.code] = {
+                            code: t.code,
+                            name: t.name,
+                            subject: t.subject,
+                            monday: ['Math','Physics','Chem','','','',''],
+                            tuesday: ['Physics','Chem','Math','','','',''],
+                            wednesday: ['Chem','Math','Physics','','','',''],
+                            thursday: ['Math','Physics','','','','',''],
+                            friday: ['Physics','Math','Chem','','','',''],
+                            saturday: ['','','','','','','']
+                        };
+                    }
+                });
+            }
+        });
+    })();
+</script>
+</body>
+</html>
